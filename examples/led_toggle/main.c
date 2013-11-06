@@ -34,14 +34,14 @@ int main() {
   // set button to pullup
   buttonmap = pi_gpio_claim_input(closure, pin_button, PI_GPIO_PULL_UP);
 
-  button = pi_gpio_listener_claim(pin_button);
+  button = pi_gpio_listener_claim(pin_button, PI_GPIO_EDGE_BOTH);
   led = pi_gpio_claim_output(closure, pin_led, PI_GPIO_LOW);
 
   while (1) {
-    pi_gpio_listen(button, PI_GPIO_EDGE_BOTH);
+    pi_gpio_listen(button);
     last = last == 0 ? 1 : 0;
     pi_gpio_write(led, last == 1 ? PI_GPIO_HIGH : PI_GPIO_LOW);
-    pi_gpio_listen(button, PI_GPIO_EDGE_BOTH);
+    pi_gpio_listen(button);
   }
 
   return 0;
