@@ -75,6 +75,7 @@ int main() {
   move_forward(5, 356);
   move_backward(30, 45);
 
+  pi_gpio_write(pin_enable, PI_GPIO_LOW);
   pi_gpio_release(pin_enable);
   pi_gpio_release(pin_coil_a1);
   pi_gpio_release(pin_coil_a2);
